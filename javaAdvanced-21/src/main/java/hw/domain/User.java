@@ -1,18 +1,38 @@
 package hw.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+
+@Entity
+@Table(name = "user")
 @Data
 @AllArgsConstructor
+
 public class User {
 
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
 	private String email;
 	private String firstName;
 	private String lastName;
-	private UserRole role;
 	private String password;
+	private String passwordConfig;
+	
+	@Enumerated(EnumType.STRING)
+	private UserRole role;
+	
+	
 	public User() {
 		super();
 	}
@@ -25,5 +45,13 @@ public class User {
 		this.password = password;
 	}
 	
+	public User(User user) {
+		this.id = user.id;
+		this.email = user.email;
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.role = user.role;
+		this.password = user.password;
+	}
 	
 }
