@@ -20,7 +20,8 @@ public class UserService {
 	
 	public void save(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPasswordConfig()));
+		
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPasswordConfirm()));
 		user.setRole(UserRole.ROLE_USER);
 		userRepo.save(user);
 	}
