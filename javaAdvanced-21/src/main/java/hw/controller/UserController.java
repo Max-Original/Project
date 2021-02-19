@@ -7,13 +7,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import hw.domain.Product;
 import hw.domain.User;
+import hw.service.ProductService;
 import hw.service.UserService;
 
 @Controller
 public class UserController {
 
+	@Autowired
+	private ProductService productService;
+	
 	@Autowired
 	private UserService userService;
 	
@@ -47,8 +53,17 @@ public class UserController {
 	    }
 
 	    @RequestMapping(value ="/home", method = RequestMethod.GET)
-	    public String welcome(Model model) {
-	        return "home";
+	    public ModelAndView welcome() {
+	    	
+	    	ModelAndView map = new ModelAndView();
+	    	map.addObject("products",productService.getAllProduct());
+	    	
+	        return map;
+	    }
+	    
+	    @RequestMapping(value ="/create-product", method = RequestMethod.GET)
+	    public ModelAndView createProduct() {
+	        return new ModelAndView("create-product","product", new Product());
 	    }
 	    
 }
