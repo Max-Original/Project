@@ -1,6 +1,6 @@
 package hw.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,11 +27,11 @@ public class Basket {
 	
 	@ManyToOne(targetEntity = hw.domain.User.class)
 	@JoinColumn(name = "user_id",referencedColumnName = "id")
-	private Integer user_id;
+	private User user;
 	
 	@ManyToOne(targetEntity = hw.domain.Product.class)
 	@JoinColumn(name = "product_id", referencedColumnName ="id")
-	private Integer product_id;
+	private Product product;
 	
 	@Column
 	private Date purchase_date;
@@ -39,11 +39,16 @@ public class Basket {
 	public Basket() {
 		super();
 	}
+	
+	public Basket(Integer id) {
+		this.id = id;
+	}
+	
 
-	public Basket(Integer userId, Integer productId, Date purchaseDate) {
+	public Basket(User user, Product product, Date purchaseDate) {
 		super();
-		this.user_id = userId;
-		this.product_id = productId;
+		this.user = user;
+		this.product = product;
 		this.purchase_date = purchaseDate;
 	}
 

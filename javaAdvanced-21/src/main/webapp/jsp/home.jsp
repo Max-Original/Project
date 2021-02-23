@@ -29,9 +29,9 @@
 		<!-- Sidebar -->
 		<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
 			<h3 class="w3-bar-item">Menu</h3>
-			<a href="/home" class="w3-bar-item w3-button">Home</a> <a
-				href="/create-product" class="w3-bar-item w3-button">Create
-				product</a> <a href="/basket" class="w3-bar-item w3-button">Basket</a>
+			<a href="/home" class="w3-bar-item w3-button">Home</a> 
+			<a href="/create-product" class="w3-bar-item w3-button">Create product</a>
+			<a href="/basket" class="w3-bar-item w3-button">Basket</a>
 		</div>
 
 
@@ -60,16 +60,25 @@
 					<c:forEach items="${products}" var="currentProduct">
 
 						<div class="w3-card-4" style="width: 20%; margin: 2%">
-							<img
-								src="images/default.jpg"
+
+							<img src="data:image/jpg;base64, ${currentProduct.encoded_image}"
 								style="width: 100%">
+
 							<div class="w3-container w3-center" style="word-wrap: break-word">
 								<h3>${currentProduct.name}</h3>
-								<p >${currentProduct.description}</p>
-								<p >${currentProduct.price}</p>
+								<p>${currentProduct.description}</p>
+								<p>${currentProduct.price}</p>
 							</div>
-							<button class="w3-button w3-block w3-dark-grey">+ add to
-								basket</button>
+
+
+							<form action="${contextPath}/basket" method="POST" enctype="multipart/form-data">
+
+								<input type="hidden" value="${currentProduct.id}"
+									class="form-control" name="productId">
+								<input type="submit" value="+ add to basket"
+									class="w3-button w3-block w3-dark-grey">
+							</form>
+
 						</div>
 
 					</c:forEach>
@@ -80,9 +89,7 @@
 
 
 	</div>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>

@@ -61,9 +61,6 @@ public class UserController {
 	        return map;
 	    }
 	    
-	    @RequestMapping(value ="/create-product", method = RequestMethod.GET)
-	    public ModelAndView createProduct() {
-	        return new ModelAndView("create-product","product", new Product());
-	    }
+	    
 	    
 }
