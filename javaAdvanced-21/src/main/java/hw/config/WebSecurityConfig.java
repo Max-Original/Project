@@ -43,6 +43,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.access("hasRole('ROLE_USER')")
 		.antMatchers("/create-product")
 		.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+		.antMatchers("/baskets")
+		.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 		.anyRequest()
 		.permitAll()
 		.and()

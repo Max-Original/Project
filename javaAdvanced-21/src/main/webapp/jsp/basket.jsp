@@ -14,9 +14,9 @@
 
 		<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
 			<h3 class="w3-bar-item">Menu</h3>
-			<a href="/home" class="w3-bar-item w3-button">Home</a> <a
-				href="/create-product" class="w3-bar-item w3-button">Create
-				product</a> <a href="/basket" class="w3-bar-item w3-button">Basket</a>
+			<a href="/home" class="w3-bar-item w3-button">Home</a> 
+			<a href="/create-product" class="w3-bar-item w3-button">Create product</a>
+			<a href="/baskets" class="w3-bar-item w3-button">Basket</a>
 		</div>
 
 
@@ -56,7 +56,7 @@
 								<td>${basket.product.price}</td>
 								<td><img src="data:image/jpg;base64,${basket.product.encoded_image}" alt="image" style="width: 10%"></td>
 								<td>${basket.purchase_date}</td>
-								<td><a href="delete?id= ${basket.id}">delete</a></td>
+								<td><a href="basket?id= ${basket.id}">delete</a></td>
 							</tr>
 
 						</c:forEach>

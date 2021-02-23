@@ -57,7 +57,7 @@ public class BasketController {
 	  
 	  @RequestMapping(value ="/basket", method = RequestMethod.GET)
 	    public ModelAndView delete(@RequestParam String id) {
-	    	
+
 		  basketService.delete(new Basket(Integer.parseInt(id.replaceAll("\\s",""))));
 		  
 	    	return getBasketItems();
