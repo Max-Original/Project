@@ -40,11 +40,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/")
 		.permitAll()
 		.antMatchers("/home")
-		.access("hasRole('ROLE_USER')")
+		.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 		.antMatchers("/create-product")
-		.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+		.access("hasRole('ROLE_ADMIN')")
 		.antMatchers("/baskets")
-		.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+		.access("hasRole('ROLE_USER')")
 		.anyRequest()
 		.permitAll()
 		.and()
@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		.and().logout()
 		.logoutSuccessUrl("/login?logout")
-		.and().exceptionHandling().accessDeniedPage("/error")
+		.and().exceptionHandling().accessDeniedPage("/403")
 		.and().csrf();
 	}
 }
