@@ -197,6 +197,8 @@ a:hover {
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<link type="text/css" href="login.css" rel="stylesheet">
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		var selItem = localStorage.getItem("locales");
@@ -209,6 +211,17 @@ a:hover {
 			}
 		});
 	});
+	
+	function myFunction(id) {
+		  var x = document.getElementById(id);
+		  if (x.style.display === "none") {
+		    x.style.display = "block";
+		  } else {
+		    x.style.display = "none";
+		  }
+		}
+	
+
 </script>
 
 
@@ -229,7 +242,7 @@ a:hover {
 	</div>
 
 	<div class="container">	
-	<div class="logo" ><spring:message code="login.welcome" />login</div>
+	<div class="logo" ><spring:message code="login.welcome" /></div>
 	<!-- Main Form -->
 	<div class="login-form-1">
 		<form method="POST" action="${contextPath}/login" class="form-signin text-left" id="login-form">
@@ -239,27 +252,91 @@ a:hover {
 				
 					<div class="form-group">
 						
-					    <input name="email" type="text" class="form-control" placeholder="Email: "/>
+					    <input name="email" type="text" class="form-control" placeholder="<spring:message code="login.email" /> "/>
 					</div>
 					
 					<div class="form-group">
 						
-						<input name="password" type="password" class="form-control " placeholder="Password: "/>
+						<input name="password" type="password" class="form-control " placeholder="<spring:message code="login.password" />"/>
 					</div>
 					
 				</div>
 				 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				 <button class="btn btn-lg btn-primary  login-button " type="submit"><i class="fas fa-chevron-right"></i></button>
+				 <button class="btn btn-primary  login-button " type="submit"><i class="fas fa-chevron-right"></i></button>
 			</div>
 			<div class="etc-login-form">
-				<p>new user? <a href="${contextPath}/registration">create new account</a></p>
+				<p><spring:message code="login.new_user" /> <a href="#" onclick="myFunction('showHide')"></a><spring:message code="login.create_account" /></p>
 				
 			</div>
 		</form>
-	
  
 
 </div>
+
+<div id="showHide">
+ <div class="container-two">
+
+		<div class="login-form-1">
+
+			<form:form method="POST" modelAttribute="userForm" class="form-signin text-left" id="register-form">
+				<h2 class="form-signin-heading logo">Create your account</h2>
+
+				<div class="login-group">
+
+					<spring:bind path="firstName">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:input type="text" path="firstName" class="form-control"
+								placeholder="First name" autofocus="true"></form:input>
+							<form:errors path="firstName"></form:errors>
+						</div>
+					</spring:bind>
+
+					<spring:bind path="lastName">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:input type="text" path="lastName" class="form-control"
+								placeholder="Last name" autofocus="true"></form:input>
+							<form:errors path="lastName"></form:errors>
+						</div>
+					</spring:bind>
+
+
+					<spring:bind path="email">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:input type="text" path="email" class="form-control"
+								placeholder="Email" autofocus="true"></form:input>
+							<form:errors path="email"></form:errors>
+						</div>
+					</spring:bind>
+
+					<spring:bind path="password">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:input type="password" path="password" class="form-control"
+								placeholder="Password"></form:input>
+							<form:errors path="password"></form:errors>
+						</div>
+					</spring:bind>
+
+					<spring:bind path="passwordConfirm">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:input type="password" path="passwordConfirm"
+								class="form-control" placeholder="Confirm your password"></form:input>
+							<form:errors path="passwordConfirm"></form:errors>
+						</div>
+					</spring:bind>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block login-button" type="submit"><i class="fas fa-chevron-right"></i></button>
+			</form:form>
+		</div>
+
+		<div class="etc-login-form">
+			<p>
+				already have an account? <a href="login">login here</a>
+			</p>
+		</div>
+
+	</div>
+ 
+ </div>
 </div>
 
 <!-- <script src="/login.js"></script> -->

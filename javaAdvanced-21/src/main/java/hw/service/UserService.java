@@ -27,7 +27,6 @@ public class UserService {
 		logger.info("Saved: " + user);
 		
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPasswordConfirm()));
 		user.setRole(UserRole.ROLE_USER);
 		userRepo.save(user);
