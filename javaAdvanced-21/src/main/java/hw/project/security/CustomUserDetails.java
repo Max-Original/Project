@@ -1,4 +1,4 @@
-package hw.security;
+package hw.project.security;
 
 import java.util.Collection;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
-import hw.domain.User;
+import hw.project.domain.User;
 
 public class CustomUserDetails extends User implements UserDetails{
 

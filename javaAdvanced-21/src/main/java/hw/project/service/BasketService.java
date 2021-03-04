@@ -1,4 +1,4 @@
-package hw.service;
+package hw.project.service;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import org.slf4j.Logger;
 
-import hw.dao.BasketRepo;
-import hw.domain.Basket;
+import hw.project.dao.BasketRepo;
+import hw.project.domain.Basket;
 
 @Service
 public class BasketService {

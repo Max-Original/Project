@@ -1,4 +1,4 @@
-package hw.controller;
+package hw.project.controller;
 
 import java.util.Date;
 
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import hw.domain.Basket;
-import hw.domain.Product;
-import hw.domain.User;
-import hw.service.BasketService;
-import hw.service.ProductService;
-import hw.service.UserService;
+import hw.project.domain.Basket;
+import hw.project.domain.Product;
+import hw.project.domain.User;
+import hw.project.service.BasketService;
+import hw.project.service.ProductService;
+import hw.project.service.UserService;
 
 @Controller
 public class BasketController {

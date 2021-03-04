@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>home</title>
+    <title>my title</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -25,10 +25,10 @@
 
 
 
-   <!-- Font Awesome JS -->
-   <!--   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
- -->
+
 </head>
 
 <body>
@@ -80,7 +80,7 @@
                             <li class="nav-item active">
                                 
                                 
-                                <a class="nav-link sing-out" href="#" onclick="document.forms['logoutForm'].submit()">Sing out</a>
+                                <a class="nav-link" href="#" onclick="document.forms['logoutForm'].submit()">Sing out</a>
                             
                             
                             
@@ -131,7 +131,7 @@
 
 									<input type="hidden" value="${currentProduct.id}"
 										class="form-control" name="productId">
-									<input type="submit" class="w3-button w3-block button-add-purple"
+									<input type="submit" class="w3-button w3-block w3-dark-grey"
 										value="+ add to basket">
 								</form:form>
 							</sec:authorize>

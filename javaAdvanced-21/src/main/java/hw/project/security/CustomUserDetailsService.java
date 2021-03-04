@@ -1,4 +1,4 @@
-package hw.security;
+package hw.project.security;
 
 import java.util.Collections;
 import java.util.Optional;
@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import hw.dao.UserRepo;
-import hw.domain.User;
+import hw.project.dao.UserRepo;
+import hw.project.domain.User;
 
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService{
@@ -21,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		
-		Optional<hw.domain.User> userOptional = userRepo.findByEmail(email);
+		Optional<hw.project.domain.User> userOptional = userRepo.findByEmail(email);
 		
 		if(userOptional.isPresent()) {
 			User user = userOptional.get();

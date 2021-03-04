@@ -1,4 +1,4 @@
-package hw.service;
+package hw.project.service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hw.dao.ProductRepo;
-import hw.domain.Product;
+import hw.project.dao.ProductRepo;
+import hw.project.domain.Product;
 
 @Service
 public class ProductService {

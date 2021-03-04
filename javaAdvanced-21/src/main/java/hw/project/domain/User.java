@@ -1,4 +1,4 @@
-package hw.domain;
+package hw.project.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

@@ -1,4 +1,4 @@
-package hw.domain;
+package hw.project.domain;
 
 import java.util.Date;
 
@@ -25,11 +25,11 @@ public class Basket {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@ManyToOne(targetEntity = hw.domain.User.class)
+	@ManyToOne(targetEntity = hw.project.domain.User.class)
 	@JoinColumn(name = "user_id",referencedColumnName = "id")
 	private User user;
 	
-	@ManyToOne(targetEntity = hw.domain.Product.class)
+	@ManyToOne(targetEntity = hw.project.domain.Product.class)
 	@JoinColumn(name = "product_id", referencedColumnName ="id")
 	private Product product;
 	

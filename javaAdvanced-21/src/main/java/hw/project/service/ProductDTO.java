@@ -1,11 +1,11 @@
-package hw.service;
+package hw.project.service;
 
 import java.io.IOException;
 import java.util.Base64;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import hw.domain.Product;
+import hw.project.domain.Product;
 
 public class ProductDTO {
 

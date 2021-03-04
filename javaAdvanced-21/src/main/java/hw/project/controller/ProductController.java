@@ -1,4 +1,4 @@
-package hw.controller;
+package hw.project.controller;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import hw.service.ProductDTO;
-import hw.service.ProductService;
+import hw.project.service.ProductDTO;
+import hw.project.service.ProductService;
 
 
 
