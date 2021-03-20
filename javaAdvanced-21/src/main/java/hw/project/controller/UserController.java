@@ -1,16 +1,21 @@
 package hw.project.controller;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import hw.project.domain.Product;
 import hw.project.domain.User;
 import hw.project.service.ProductService;
 import hw.project.service.UserService;
@@ -39,15 +44,15 @@ public class UserController {
 		return "login";
 	}
 
-	@PostMapping(value = "/registration")
-	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+	@PostMapping(value = "/")
+	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
-			return "login";
+			return "redirect:/login#";
 		}
-
+		
 		userService.save(userForm);
-
+		
 		return "redirect:/home";
 	}
 
@@ -59,5 +64,26 @@ public class UserController {
 
 		return map;
 	}
-
+	
+	@RequestMapping(value = "/user", method = RequestMethod.GET)	
+	private ModelAndView getallUsers() {
+		return getUsers();
+	}
+	
+	@RequestMapping(value = "/remove", method = RequestMethod.GET)
+	private ModelAndView delete(@RequestParam String id) {
+		userService.delete(new User(Integer.parseInt(id.replaceAll("\\s",""))));	
+		return getUsers();
+	}
+	
+	
+	
+	
+	private ModelAndView getUsers() {
+		ModelAndView map = new ModelAndView("user");
+		map.addObject("users", userService.getAllUsers());
+		return map;
+	}
+	
+	
 }

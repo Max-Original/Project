@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -6,34 +6,24 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
+ <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>home</title>
-
-    <!-- Bootstrap CSS CDN -->
+    
+     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- My Custom CSS -->
     <link rel="stylesheet" href="css/sidebar.css">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 	
-	
-
-
-
-   <!-- Font Awesome JS -->
-<!-- <!--      <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
- --> 
+<title>Orders</title>
 </head>
-
 <body>
-
-    <div class="wrapper">
+ <div class="wrapper">
+        <!-- Sidebar  -->
+        <div class="wrapper">
 		<!-- Sidebar  -->
 		<nav id="sidebar">
 			<div class="sidebar-header">
@@ -42,7 +32,7 @@
 
 			<ul class="list-unstyled components">
 				<p><spring:message code='sidebar.menu' /></p>
-				<p><spring:message code='home.welcome' /> ${pageContext.request.userPrincipal.name}</p>
+				
 				<li class="active"><a href="/home"
 					class="w3-bar-item w3-button"><spring:message code='sidebar.menu.home' /></a></li>
 				<li class="active"><sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -64,87 +54,62 @@
         <!-- Page Content  -->
         <div id="content">
 
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
 
 					<button type="button" id="sidebarCollapse" class="btn btn-info">
-						<i class="fas fa-align-left"></i> <span><spring:message
-								code='sidebar.show.menu' /></span>
+						<i class="fas fa-align-left"></i> <span><spring:message code='sidebar.show.menu' /></span>
 					</button>
 
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="nav navbar-nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="#"
-								onclick="document.forms['logoutForm'].submit()"><spring:message
-										code='sidebar.sing.out' /></a></li>
+							<li class="nav-item active">
+							<a class="nav-link" href="#" onclick="document.forms['logoutForm'].submit()"><spring:message code='sidebar.sing.out' /></a>
+								</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
-			<div id="content-products">
-
-			<div class="w3-container w3-teal">
-				<h1 id="h3-product">Products</h1>
-			</div>
-
-			<div class="w3-container">
-
-				<c:if test="${pageContext.request.userPrincipal.name != null}">
+			
+			<c:if test="${pageContext.request.userPrincipal.name != null}">
 					<form id="logoutForm" method="POST" action="${contextPath}/logout">
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 					</form>
 				</c:if>
+			
+			<table class="table table-striped">
+						<thead>
+							<tr>
+								<th><spring:message code='basket.product.id' /></th>
+								<th><spring:message code='basket.product.name' /></th>
+								<th><spring:message code='basket.product.description' /></th>
+								<th><spring:message code='basket.product.price' /></th>
+								<th><spring:message code='basket.product.image' />e</th>
+								<th><spring:message code='basket.product.action' /></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="order" items="${orders}">
+								<tr>
+									<td>${order.id}</td>
+									<td>${order.product.name}</td>
+									<td>${order.product.description}</td>
+									<td>${order.product.price}</td>
+									<td><img
+										src="data:image/jpg;base64,${order.product.encoded_image}"
+										alt="image" style="width: 10%"></td>
+									<%-- <td>${order.date_order}</td> --%>
+									<td><a href="order?id= ${order.id}">done</a></td>
+								</tr>
 
-
-				<c:if test="${not empty products}">
-					<c:forEach items="${products}" var="currentProduct">
-
-						<div class="w3-card-4" style="width: 20%; margin: 2%">
-
-							<img src="data:image/jpg;base64, ${currentProduct.encoded_image}"
-								style="width: 100%">
-
-							<div class="w3-container w3-center" style="word-wrap: break-word">
-								<h3>${currentProduct.name}</h3>
-								<p>${currentProduct.description}</p>
-								<p>${currentProduct.price}</p>
-								<p id="amount_products">${currentProduct.amount}</p>
-							</div>
-
-
-
-							<sec:authorize access="hasRole('ROLE_USER')">
-								<form:form action="${contextPath}/basket" method="POST" enctype="multipart/form-data">
-									<input type="hidden" value="${currentProduct.id}"
-										class="form-control" name="productId">
-									<input type="submit" class="w3-button w3-block button-add-purple"
-										value="+ add to basket">
-								</form:form>
-							</sec:authorize>
-							<sec:authorize access="hasRole('ROLE_ADMIN')">
-								<form:form action="${contextPath}/product" method="GET" enctype="multipart/form-data">
-									<input type="hidden" value="${currentProduct.id}"
-										class="form-control" name="productId">
-									<input type="submit" class="w3-button w3-block button-add-purple"
-										value="DELETE">
-								</form:form>
-							</sec:authorize>
-
-						</div>
-
-					</c:forEach>
-				</c:if>
-			</div>
-
-		</div>
-
-            
-        </div>
-            
-    </div>
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
+							</c:forEach>
+						</tbody>
+					</table>
+</div>
+</div>
+</div>
+<!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
@@ -153,19 +118,6 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-    </script>
+<script src="js/sidebar.js"></script>
 </body>
-
 </html>

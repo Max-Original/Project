@@ -1,5 +1,6 @@
 package hw.project.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -7,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,11 +28,21 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
+	@Column
 	private String email;
-	private String firstName;
-	private String lastName;
+	
+	@Column
+	private String first_name;
+	
+	@Column
+
+	private String last_name;
+	
+	@Column
 	private String password;
-	private String passwordConfirm;
+	
+	@Column
+	private String password_confirm;
 	
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
@@ -36,22 +51,37 @@ public class User {
 	public User() {
 		super();
 	}
-	public User(String email, String firstName, String lastName, UserRole role, String password) {
+	
+	
+	
+	public User(String email, String first_name, String last_name, String password, UserRole role) {
 		super();
 		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.role = role;
+		this.first_name = first_name;
+		this.last_name = last_name;
 		this.password = password;
+		this.role = role;
 	}
-	
+
+
 	public User(User user) {
+		super();
 		this.id = user.id;
 		this.email = user.email;
-		this.firstName = user.firstName;
-		this.lastName = user.lastName;
-		this.role = user.role;
+		this.first_name = user.first_name;
+		this.last_name = user.last_name;
 		this.password = user.password;
+		this.role = user.role;
+	}
+
+
+
+	public User(Integer id) {
+		super();
+		this.id = id;
 	}
 	
+
+
+
 }

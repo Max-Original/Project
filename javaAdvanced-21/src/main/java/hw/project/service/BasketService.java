@@ -2,11 +2,10 @@ package hw.project.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import org.slf4j.Logger;
 
 import hw.project.dao.BasketRepo;
 import hw.project.domain.Basket;
@@ -34,5 +33,11 @@ public class BasketService {
 		
 		logger.info("Save basket" + basket );
 		return basketRepo.save(basket);
+	}
+
+	public Basket findById(Integer id) {
+
+		logger.info("Getting basket with: " + id);
+		return basketRepo.findById(id).get();
 	}
 }

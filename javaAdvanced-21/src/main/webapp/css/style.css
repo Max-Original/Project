@@ -92,7 +92,7 @@ a:hover {
   transform: rotate(450deg);
 }
 .login-form-1 .login-button.clicked {
-  color: #555555;
+  border: 5px solid transparent;
 }
 .login-form-1 .login-button.clicked:hover {
   transform: none;
@@ -138,6 +138,10 @@ display: none;
 .login-form-1 .register-button.clicked.error {
   color: #e74c3c;
 }
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
 
 /*=== 9. Misc ===*/
 .logo {
@@ -151,15 +155,14 @@ display: none;
 
 .btn-primary {
 	color: #fff;
-	background-color: #428bca;
-	border-color: #357ebd
+
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active,
 	.btn-primary.active, .open>.dropdown-toggle.btn-primary {
 	color: #fff;
-	background-color: #3071a9;
-	border-color: #285e8e
+	background-color: #6f42c1 !important;
+	border-color: #5e4887 !important;
 }
 
 .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary
@@ -167,21 +170,7 @@ display: none;
 	background-image: none
 }
 
-.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary,
-	.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
-	.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
-	.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus,
-	.btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active,
-	.btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active
-	{
-	background-color: #428bca;
-	border-color: #357ebd
-}
 
-.btn-primary .badge {
-	color: #428bca;
-	background-color: #fff
-}
 
 /*=== 11. button pointer test ===*/
 
@@ -234,6 +223,14 @@ display: none;
 
 .fieldset{
 	border: none ;
-	/* border: 1px solid #666666;
-	border-radius: 30px; */
+}
+
+/*== 13. errors create new user form ===*/
+.err_style{
+	font-size: x-small;
+	color: red;
+}
+
+#amount_products{
+	visibility: none;
 }

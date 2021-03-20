@@ -29,6 +29,9 @@ public class Product {
 	private String description;
 	
 	@Column
+	private Integer amount;
+	
+	@Column
 	private Double price;
 	
 
@@ -37,6 +40,10 @@ public class Product {
 	
 	public Product() {
 		super();
+	}
+	
+	public Product(Integer id) {
+		this.id = id;
 	}
 
 	public Product(String name, String description, Double price) {

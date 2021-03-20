@@ -7,7 +7,9 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" >
+
+ 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +22,9 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
-
 <script src="js/myscripts.js"></script>
+
+
 
 </head>
 <body>
@@ -61,7 +63,7 @@
 					
 				</div>
 				 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				 <button class="btn btn-primary  login-button " type="submit"><i class="fas fa-chevron-right"></i></button>
+				 <button class="btn btn-primary  login-button "  type="submit"><i class="fas fa-chevron-right"></i></button>
 			</div>
 			<div class="etc-login-form">
 				<p><spring:message code="login.new_user" /> <a href="#" onclick="myFunction('showHide')"><spring:message code="login.create_account" /></a></p>
@@ -77,80 +79,54 @@
 
 		<div class="login-form-1">
 
-			<form:form method="POST" action="/registration" modelAttribute="userForm" class="form-signin text-left" id="register-form">
+			<form:form  method="POST" action="/" modelAttribute="userForm" class="form-signin text-left" id="register-form" onsubmit="return validateForm()">
 				<h2 class="form-signin-heading logo"><spring:message code="login.new_user_word" /></h2>
 
 				<div class="login-group">
 
-<%-- 					<spring:bind path="firstName">
-						<div class="form-group ${status.error ? 'has-error' : ''}">
-									
-							<form:input type="text" path="firstName" class="form-control" placeholder="<spring:message code="login.new_user_word" />" autofocus="true"/>
-						
-			
-							<form:errors path="firstName"></form:errors>
-						</div>
-					</spring:bind> --%>
-					
-					<div class="form-group">
-					    <input name="firstName" type="text" class="form-control" placeholder="<spring:message code="login.register_form_first_name" />"/>
-					</div>
-
-<%-- 					<spring:bind path="lastName">
-						<div class="form-group ${status.error ? 'has-error' : ''}">
-							<form:input type="text" path="lastName" class="form-control"
-								placeholder="Last name" autofocus="true"></form:input>
-							<form:errors path="lastName"></form:errors>
-						</div>
-					</spring:bind> --%>
-
-
-							<div class="form-group">
-								<input name="lastName" type="text" class="form-control"
-									placeholder="<spring:message code="login.register_form_last_name" />" />
+						<div class="form-group">
+								<input name="first_name" type="text" id="first_name" class="form-control" required
+       							minlength="2" maxlength="30" placeholder="
+       							<spring:message code="login.register_form_first_name" />" />
 							</div>
 
-<%-- 							<spring:bind path="email">
-						<div class="form-group ${status.error ? 'has-error' : ''}">
-							<form:input type="text" path="email" class="form-control"
-								placeholder="Email" autofocus="true"></form:input>
-							<form:errors path="email"></form:errors>
-						</div>
-					</spring:bind> --%>
+						<div id="fname_err" class="err_style"></div>
+
+							<div class="form-group">
+								<input name="last_name" type="text" class="form-control" id="last_name" required
+       							minlength="2" maxlength="30"	placeholder="
+       							<spring:message code="login.register_form_last_name" />" />
+       						
+							</div>
+
+							<div id="lname_err" class="err_style"></div>
 					
 					<div class="form-group">
-								<input name="email" type="email" class="form-control"
+								<input name="email" type="email" id="email" class="form-control"
 									placeholder="<spring:message code="login.register_form_email" />" />
 							</div>
 
-<%-- 					<spring:bind path="password">
-						<div class="form-group ${status.error ? 'has-error' : ''}">
-							<form:input type="password" path="password" class="form-control"
-								placeholder="Password"></form:input>
-							<form:errors path="password"></form:errors>
-						</div>
-					</spring:bind> --%>
+					<div id="email_err" class="err_style"></div>
 					
 					<div class="form-group">
-								<input name="password" type="password" class="form-control"
+								<input name="password" type="password" id="password"  class="form-control" minlength="8" maxlength="30"
 									placeholder="<spring:message code="login.register_form_password" />" />
 							</div>
+							
+					<div id="password_err" class="err_style"></div>
 
-<%-- 					<spring:bind path="passwordConfirm">
-						<div class="form-group ${status.error ? 'has-error' : ''}">
-							<form:input type="password" path="passwordConfirm"
-								class="form-control" placeholder="Confirm your password"></form:input>
-							<form:errors path="passwordConfirm"></form:errors>
-						</div>
-					</spring:bind> --%>
 					
 					<div class="form-group">
-								<input name="passwordConfirm" type="password" class="form-control"
+								<input name="password_confirm" type="password" id="password_confirm"  required class="form-control" minlength="8" maxlength="30"
 									placeholder="<spring:message code="login.register_form_password_confirm" />" />
+									<span id='message'></span>
+									
 							</div>
 					
+					<div id="password_c_err" class="err_style"></div>
+					
 				</div>
-				<button class="btn btn-lg btn-primary btn-block register-button" type="submit"><i class="fas fa-chevron-right"></i></button>
+				<button class="btn btn-lg btn-primary btn-block register-button"  type="submit"><i class="fas fa-chevron-right"></i></button>
 			</form:form>
 		</div>
 
@@ -165,7 +141,7 @@
  </div>
 </div>
 
-<!-- <script src="/login.js"></script> -->
+
 
 
 </body>

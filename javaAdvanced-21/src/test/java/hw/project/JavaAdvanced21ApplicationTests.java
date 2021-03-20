@@ -57,12 +57,12 @@ class JavaAdvanced21ApplicationTests {
 	assertThat(users, hasSize(0));
 	
 	User user = new User();
-	user.setFirstName("testovi");
-	user.setLastName("testovi");
+	user.setFirst_name("testovi");
+	user.setLast_name("testovi");
 	user.setEmail("testovu");
 	user.setPassword("testovi");
 	user.setRole(UserRole.ROLE_ADMIN);
-	user.setPasswordConfirm("testovu");
+	user.setPassword_confirm("testovu");
 	
 	userService.save(user);
 	
@@ -86,12 +86,12 @@ class JavaAdvanced21ApplicationTests {
 		assertThat(users, hasSize(0));
 		
 		User user = new User();
-		user.setFirstName("testovi");
-		user.setLastName("testovi");
+		user.setFirst_name("testovi");
+		user.setLast_name("testovi");
 		user.setEmail("testovu");
 		user.setPassword("testovi");
 		user.setRole(UserRole.ROLE_ADMIN);
-		user.setPasswordConfirm("testovu");
+		user.setPassword_confirm("testovu");
 		
 		userService.save(user);
 		
@@ -194,12 +194,12 @@ class JavaAdvanced21ApplicationTests {
 	public void deletefromBasket() {
 			
 		User user = new User();
-		user.setFirstName("testovi");
-		user.setLastName("testovi");
+		user.setFirst_name("testovi");
+		user.setLast_name("testovi");
 		user.setEmail("testovu");
 		user.setPassword("testovi");
 		user.setRole(UserRole.ROLE_ADMIN);
-		user.setPasswordConfirm("testovu");
+		user.setPassword_confirm("testovu");
 		
 		userService.save(user);
 		
@@ -254,12 +254,12 @@ class JavaAdvanced21ApplicationTests {
 		assertThat(users, hasSize(0));
 		
 		User user = new User();
-		user.setFirstName("testovi");
-		user.setLastName("testovi");
+		user.setFirst_name("testovi");
+		user.setLast_name("testovi");
 		user.setEmail("testovu");
 		user.setPassword("testovi");
 		user.setRole(UserRole.ROLE_ADMIN);
-		user.setPasswordConfirm("testovu");
+		user.setPassword_confirm("testovu");
 		
 		userService.save(user);
 		
@@ -301,12 +301,12 @@ class JavaAdvanced21ApplicationTests {
 		assertThat(users, hasSize(0));
 		
 		User user = new User();
-		user.setFirstName("testovi");
-		user.setLastName("testovi");
+		user.setFirst_name("testovi");
+		user.setLast_name("testovi");
 		user.setEmail("testovu");
 		user.setPassword("testovi");
 		user.setRole(UserRole.ROLE_ADMIN);
-		user.setPasswordConfirm("testovu");
+		user.setPassword_confirm("testovu");
 		
 		userService.save(user);
 		

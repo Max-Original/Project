@@ -1,0 +1,12 @@
+let password = document.getElement("password") , password_confirm = document.getElement("password_confirm);
+
+function validatePassword(){
+if(password.value != password_confirm.value){
+password_confirm.setCutomValidity("Passwords Don't Match");
+}else{
+password_confirm.setCutomValidity("");
+}
+}
+
+password.onchange = validatePassword;
+password_config.onkeyup = validatePassword;

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hw.project.dao.ProductRepo;
+import hw.project.domain.Basket;
 import hw.project.domain.Product;
 
 @Service
@@ -34,4 +35,13 @@ public class ProductService {
 		logger.info("Getting product with: " + id);
 		return productRepo.findById(id).get();
 	}
+
+
+	public void delete(Product product) {
+		logger.info("Delete product" + product );
+		productRepo.delete(product);
+		
+	}
+	
+
 }
