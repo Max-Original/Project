@@ -8,10 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,25 +24,23 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column
+	@Column(unique = true)
 	private String email;
 	
 	@Column
 	private String first_name;
 	
 	@Column
-
 	private String last_name;
 	
 	@Column
 	private String password;
 	
-	@Column
-	private String password_confirm;
-	
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
 	
+	@Enumerated(EnumType.STRING)
+	private UserStatus status;
 	
 	public User() {
 		super();
@@ -79,6 +73,14 @@ public class User {
 	public User(Integer id) {
 		super();
 		this.id = id;
+	}
+
+
+
+	public User(Integer id, UserRole role) {
+		super();
+		this.id = id;
+		this.role = role;
 	}
 	
 

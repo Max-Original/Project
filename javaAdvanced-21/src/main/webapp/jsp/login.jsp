@@ -85,17 +85,15 @@
 				<div class="login-group">
 
 						<div class="form-group">
-								<input name="first_name" type="text" id="first_name" class="form-control" required
-       							minlength="2" maxlength="30" placeholder="
-       							<spring:message code="login.register_form_first_name" />" />
+								<input name="first_name" type="text" id="first_name" class="form-control"  placeholder="<spring:message code="login.register_form_first_name" />" required
+       							minlength="2" maxlength="30" />
 							</div>
 
 						<div id="fname_err" class="err_style"></div>
 
 							<div class="form-group">
-								<input name="last_name" type="text" class="form-control" id="last_name" required
-       							minlength="2" maxlength="30"	placeholder="
-       							<spring:message code="login.register_form_last_name" />" />
+								<input name="last_name" type="text" class="form-control" id="last_name" placeholder="<spring:message code="login.register_form_last_name" />" required
+       							minlength="2" maxlength="30"/>
        						
 							</div>
 

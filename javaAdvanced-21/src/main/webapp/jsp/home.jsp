@@ -109,19 +109,34 @@
 								<h3>${currentProduct.name}</h3>
 								<p>${currentProduct.description}</p>
 								<p>${currentProduct.price}</p>
-								<p id="amount_products">${currentProduct.amount}</p>
+								
 							</div>
 
-
-
+			
 							<sec:authorize access="hasRole('ROLE_USER')">
 								<form:form action="${contextPath}/basket" method="POST" enctype="multipart/form-data">
 									<input type="hidden" value="${currentProduct.id}"
 										class="form-control" name="productId">
-									<input type="submit" class="w3-button w3-block button-add-purple"
+									
+									
+									
+									<c:set var="amount" value="${currentProduct.amount}"/>
+				<c:choose>
+					<c:when test="${amount > 0}">	
+									<input type="submit"  class="w3-button w3-block button-add-purple"
 										value="+ add to basket">
+					</c:when>
+					<c:otherwise>
+					<input type="submit"  class="w3-button w3-block button-add-purple"
+										value="+ add to basket" style="display:none;">
+					</c:otherwise>
+					</c:choose>
+									
+										
 								</form:form>
 							</sec:authorize>
+							
+							
 							<sec:authorize access="hasRole('ROLE_ADMIN')">
 								<form:form action="${contextPath}/product" method="GET" enctype="multipart/form-data">
 									<input type="hidden" value="${currentProduct.id}"

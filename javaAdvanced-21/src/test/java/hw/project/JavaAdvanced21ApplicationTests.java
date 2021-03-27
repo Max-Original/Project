@@ -62,7 +62,7 @@ class JavaAdvanced21ApplicationTests {
 	user.setEmail("testovu");
 	user.setPassword("testovi");
 	user.setRole(UserRole.ROLE_ADMIN);
-	user.setPassword_confirm("testovu");
+	
 	
 	userService.save(user);
 	
@@ -91,7 +91,7 @@ class JavaAdvanced21ApplicationTests {
 		user.setEmail("testovu");
 		user.setPassword("testovi");
 		user.setRole(UserRole.ROLE_ADMIN);
-		user.setPassword_confirm("testovu");
+		
 		
 		userService.save(user);
 		
@@ -199,7 +199,6 @@ class JavaAdvanced21ApplicationTests {
 		user.setEmail("testovu");
 		user.setPassword("testovi");
 		user.setRole(UserRole.ROLE_ADMIN);
-		user.setPassword_confirm("testovu");
 		
 		userService.save(user);
 		
@@ -259,7 +258,6 @@ class JavaAdvanced21ApplicationTests {
 		user.setEmail("testovu");
 		user.setPassword("testovi");
 		user.setRole(UserRole.ROLE_ADMIN);
-		user.setPassword_confirm("testovu");
 		
 		userService.save(user);
 		
@@ -306,7 +304,7 @@ class JavaAdvanced21ApplicationTests {
 		user.setEmail("testovu");
 		user.setPassword("testovi");
 		user.setRole(UserRole.ROLE_ADMIN);
-		user.setPassword_confirm("testovu");
+		
 		
 		userService.save(user);
 		

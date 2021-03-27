@@ -23,10 +23,11 @@
 <!-- Scrollbar Custom CSS -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-
+       
 <title>User manager</title>
 </head>
 <body>
+
 		<div class="wrapper">
 			<!-- Sidebar  -->
 			<nav id="sidebar">
@@ -90,6 +91,17 @@
 							value="${_csrf.token}" />
 					</form>
 				</c:if>
+				
+				<div id="showHideEditRole" style= "display : none">
+				
+				<form:form method="POST" action="/editRole">
+				<input name="userId" id="userId">
+				<input name="role" type="text" placeholder="insert role" value="ROLE_">
+				<button type="submit">change</button>
+				</form:form>
+				
+				</div>
+				
 <table class="table table-striped">
 						<thead>
 							<tr>
@@ -104,24 +116,18 @@
 							<c:forEach var="user" items="${users}">
 								<tr>
 									<td>${user.id}</td>
-									<td>${user.email}</td>
-									<td>${user.first_name}</td>
+									<td>${user.email} </td>
+							        <td>${user.first_name}</td>
 									<td>${user.last_name}</td>
-									<td>${user.role}</td>
+									<td>${user.role} <a href="#" onclick="myFunction('showHideEditRole', ${user.id})">change</a></td>
+									<td>${user.status} <a href="#" onclick="changeStatus(${user.id}, ${user.status})">change</a> </td>
 								 	<td><a href="remove?id= ${user.id}">remove</a></td>
-									<form:form var="confirm" method="POST" enctype="multipart/form-data">
-									<tr>
-									<td><a href="confirm?id= ${user.id}">edit</a> </td>
-									</tr>
-									</form:form>
 								</tr>
-
 							</c:forEach>
 						</tbody>
 					</table>
 
-			</div>
-		</div>
+
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

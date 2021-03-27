@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import hw.project.dao.BasketRepo;
 import hw.project.domain.Basket;
+import hw.project.domain.User;
+import hw.project.utils.UserUtils;
 
 @Service
 public class BasketService {
@@ -18,9 +20,15 @@ public class BasketService {
 	@Autowired
 	private BasketRepo basketRepo;
 	
+	@Autowired
+	private UserUtils userUtils;
+	
 	public List<Basket> getAll(){
-		logger.info("Get all basket items");
-		return basketRepo.findAll();
+		
+		User currentUser = userUtils.getCurrentUser();
+		logger.info("Get all basket items for current user");
+		
+		return basketRepo.findAllByUser(currentUser);
 	}	
 	
 	public void delete(Basket basket) {

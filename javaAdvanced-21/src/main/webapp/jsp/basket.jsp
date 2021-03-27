@@ -99,6 +99,7 @@
 									<td>${basket.product.name}</td>
 									<td>${basket.product.description}</td>
 									<td>${basket.product.price}</td>
+									<td>${basket.product.amount}</td>
 									<td><img
 										src="data:image/jpg;base64,${basket.product.encoded_image}"
 										alt="image" style="width: 10%"></td>
